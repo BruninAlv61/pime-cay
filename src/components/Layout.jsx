@@ -1,4 +1,5 @@
 import '../styles/Layout.css'
+import { Footer } from './Footer.jsx'
 
 export function Layout({ children }) {
   return (
@@ -30,6 +31,7 @@ export function Layout({ children }) {
         </a>
       </header>
       <main className="main">{children}</main>
+      <Footer />
     </>
   )
 }

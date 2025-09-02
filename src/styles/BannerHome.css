@@ -1,0 +1,97 @@
+.banner-home {
+  width: 100%;
+  background: linear-gradient(to bottom right, #ffedfb, #e1f5fd, #fbddfa);
+  padding: 2.5rem 0 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.banner-home__title {
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-align: center;
+  color: #2d2d2d;
+}
+
+.banner-home__desc {
+  font-size: 1.1rem;
+  text-align: center;
+  color: #444;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.banner-home__features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.banner-home__feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  max-width: 320px;
+}
+
+.banner-home__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+}
+
+.banner-home__icon--pink svg circle {
+  fill: #ffe6f7;
+}
+
+.banner-home__icon--blue svg circle {
+  fill: #e1f5fd;
+}
+
+.banner-home__feature-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  text-align: center;
+}
+
+.banner-home__feature-desc {
+  font-size: 1rem;
+  color: #444;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .banner-home {
+    padding: 3.5rem 0 3.5rem 0;
+    gap: 2.7rem;
+  }
+  .banner-home__title {
+    font-size: 2.4rem;
+  }
+  .banner-home__desc {
+    font-size: 1.25rem;
+    max-width: 700px;
+  }
+  .banner-home__features {
+    flex-direction: row;
+    justify-content: center;
+    gap: 3.5rem;
+    width: 100%;
+  }
+  .banner-home__feature {
+    max-width: 340px;
+  }
+  .banner-home__feature-title {
+    font-size: 1.18rem;
+  }
+  .banner-home__feature-desc {
+    font-size: 1.05rem;
+  }
+}

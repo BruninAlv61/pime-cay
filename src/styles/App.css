@@ -4,3 +4,16 @@
   padding: 0;
   font-family: sans-serif;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #3c3c3c;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
