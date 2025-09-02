@@ -1,5 +1,6 @@
 import '../styles/ProductosDestacados.css'
 import { useProductosDestacados } from '../hooks/useProductosDestacados.js'
+import { Link } from 'react-router-dom'
 
 export function ProductosDestacados() {
   const { productos, loading, error } = useProductosDestacados()
@@ -10,7 +11,7 @@ export function ProductosDestacados() {
         <header className="productosDestacados__header">
           <div className="productosDestacados__header__title">
             <h2>Productos Destacados</h2>
-            <a href="#">Ver todos los productos</a>
+            <Link to="productos">Ver todos los productos</Link>
           </div>
           <div className="productosDestacados__header__subtitle">
             <p>
@@ -34,7 +35,7 @@ export function ProductosDestacados() {
         <header className="productosDestacados__header">
           <div className="productosDestacados__header__title">
             <h2>Productos Destacados</h2>
-            <a href="#">Ver todos los productos</a>
+            <Link to="productos">Ver todos los productos</Link>
           </div>
           <div className="productosDestacados__header__subtitle">
             <p>
@@ -57,7 +58,7 @@ export function ProductosDestacados() {
       <header className="productosDestacados__header">
         <div className="productosDestacados__header__title">
           <h2>Productos Destacados</h2>
-          <a href="#">Ver todos los productos</a>
+          <Link to="productos">Ver todos los productos</Link>
         </div>
         <div className="productosDestacados__header__subtitle">
           <p>

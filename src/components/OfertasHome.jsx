@@ -1,6 +1,7 @@
 import '../styles/OfertasHome.css'
 import { useState } from 'react'
 import { useOfertasHome } from '../hooks/useOfertasHome.js'
+import { Link } from 'react-router-dom'
 
 export function OfertasHome() {
   const { ofertas, loading, error } = useOfertasHome()
@@ -21,9 +22,9 @@ export function OfertasHome() {
               increíbles por tiempo limitado.
             </p>
           </div>
-          <a href="#" className="ofertasHome__verTodas">
+          <Link to="ofertas" className="ofertasHome__verTodas">
             Ver todas las ofertas →
-          </a>
+          </Link>
         </header>
         <div className="ofertasHome__carousel">
           <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
@@ -45,9 +46,9 @@ export function OfertasHome() {
               increíbles por tiempo limitado.
             </p>
           </div>
-          <a href="#" className="ofertasHome__verTodas">
+          <Link to="ofertas" className="ofertasHome__verTodas">
             Ver todas las ofertas →
-          </a>
+          </Link>
         </header>
         <div className="ofertasHome__carousel">
           <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
@@ -69,9 +70,9 @@ export function OfertasHome() {
               increíbles por tiempo limitado.
             </p>
           </div>
-          <a href="#" className="ofertasHome__verTodas">
+          <Link to="ofertas" className="ofertasHome__verTodas">
             Ver todas las ofertas →
-          </a>
+          </Link>
         </header>
         <div className="ofertasHome__carousel">
           <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
@@ -94,9 +95,9 @@ export function OfertasHome() {
             por tiempo limitado.
           </p>
         </div>
-        <a href="#" className="ofertasHome__verTodas">
+        <Link to="ofertas" className="ofertasHome__verTodas">
           Ver todas las ofertas →
-        </a>
+        </Link>
       </header>
       <div className="ofertasHome__carousel">
         {total > 1 && (

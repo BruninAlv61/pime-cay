@@ -1,4 +1,5 @@
 import '../styles/Layout.css'
+import { Link } from 'react-router-dom'
 import { Footer } from './Footer.jsx'
 
 export function Layout({ children }) {
@@ -13,20 +14,20 @@ export function Layout({ children }) {
         <nav className="layoutHeader__nav">
           <ul className="layoutHeader__navList">
             <li className="layoutHeader__navItem">
-              <a href="#">Inicio</a>
+              <Link to="/">Inicio</Link>
             </li>
             <li className="layoutHeader__navItem">
-              <a href="#">Productos</a>
+              <Link to="/productos">Productos</Link>
             </li>
             <li className="layoutHeader__navItem">
-              <a href="#">Categorías</a>
+              <Link to="/categorias">Categorías</Link>
             </li>
             <li className="layoutHeader__navItem">
-              <a href="#">Ofertas</a>
+              <Link to="/ofertas">Ofertas</Link>
             </li>
           </ul>
         </nav>
-        <a className="layoutHeader__contact" href="#">
+        <a className="layoutHeader__contact" href="#contacto">
           Contacto
         </a>
       </header>

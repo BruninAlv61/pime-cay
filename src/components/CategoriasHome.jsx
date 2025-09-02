@@ -1,5 +1,6 @@
 import '../styles/CategoriasHome.css'
 import { useCategoriasHome } from '../hooks/useCategoriasHome.js'
+import { Link } from 'react-router-dom'
 
 export function CategoriasHome() {
   const { categorias, loading, error } = useCategoriasHome()
@@ -10,7 +11,7 @@ export function CategoriasHome() {
         <header className="categoriasHome__header">
           <div className="categoriasHome__header__title">
             <h3>Explora por Categorías</h3>
-            <a href="#">Ver todas las categorías</a>
+            <Link to="categorias">Ver todas las categorías</Link>
           </div>
           <div className="categoriasHome__header__description">
             <p>
@@ -40,7 +41,7 @@ export function CategoriasHome() {
         <header className="categoriasHome__header">
           <div className="categoriasHome__header__title">
             <h3>Explora por Categorías</h3>
-            <a href="#">Ver todas las categorías</a>
+            <Link to="categorias">Ver todas las categorías</Link>
           </div>
           <div className="categoriasHome__header__description">
             <p>
@@ -69,7 +70,7 @@ export function CategoriasHome() {
       <header className="categoriasHome__header">
         <div className="categoriasHome__header__title">
           <h3>Explora por Categorías</h3>
-          <a href="#">Ver todas las categorías</a>
+          <Link to="categorias">Ver todas las categorías</Link>
         </div>
         <div className="categoriasHome__header__description">
           <p>

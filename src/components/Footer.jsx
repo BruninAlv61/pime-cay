@@ -1,8 +1,9 @@
 import '../styles/Footer.css'
+import { Link } from 'react-router-dom'
 
 export function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="contacto">
       <div className="footer__container">
         <div className="footer__brand">
           <img
@@ -15,9 +16,9 @@ export function Footer() {
           </p>
           <div className="footer__social">
             <span className="footer__socialTitle">Síguenos</span>
-            <a
+            <Link
               className="footer__socialLink"
-              href="https://instagram.com"
+              to="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -29,7 +30,7 @@ export function Footer() {
                 height={22}
               />
               Instagram
-            </a>
+            </Link>
           </div>
         </div>
         <div className="footer__links">
@@ -37,16 +38,16 @@ export function Footer() {
             <span className="footer__sectionTitle">Categorías</span>
             <ul className="footer__list">
               <li>
-                <a href="#">Vestidos</a>
+                <Link to="#">Vestidos</Link>
               </li>
               <li>
-                <a href="#">Tops</a>
+                <Link to="#">Tops</Link>
               </li>
               <li>
-                <a href="#">Faldas</a>
+                <Link to="#">Faldas</Link>
               </li>
               <li>
-                <a href="#">Accesorios</a>
+                <Link to="#">Accesorios</Link>
               </li>
             </ul>
           </div>
