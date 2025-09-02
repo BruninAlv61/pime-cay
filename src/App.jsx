@@ -1,11 +1,12 @@
 import './styles/App.css'
 import { Layout } from './components/Layout.jsx'
+import { Hero } from './components/Hero.jsx'
 
 function App() {
   return (
     <>
       <Layout>
-        <h1>PIME CAY</h1>
+        <Hero />
       </Layout>
     </>
   )

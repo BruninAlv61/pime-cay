@@ -46,7 +46,7 @@
 
 @media (min-width: 850px) {
   .layoutHeader {
-    padding: 1rem 3rem;
+    padding: .5rem 3rem;
     .layoutHeader__nav {
       display: flex;
     }

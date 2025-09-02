@@ -11,7 +11,7 @@ export function Layout({ children }) {
         />
         <nav className="layoutHeader__nav">
           <ul className="layoutHeader__navList">
-            <li className="">
+            <li className="layoutHeader__navItem">
               <a href="#">Inicio</a>
             </li>
             <li className="layoutHeader__navItem">
