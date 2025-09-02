@@ -1,9 +1,12 @@
-import './App.css'
+import './styles/App.css'
+import { Layout } from './components/Layout.jsx'
 
 function App() {
   return (
     <>
-      <h1>PIME-CAY</h1>
+      <Layout>
+        <h1>PIME CAY</h1>
+      </Layout>
     </>
   )
 }
