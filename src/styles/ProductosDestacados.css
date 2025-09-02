@@ -124,6 +124,11 @@
             font-size: 1.2rem;
             padding: 0.7rem 1rem;
             border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .productosDestacados__list__itemContent__verDetalles:hover {
+          background-color: #f686f0;
         }
       }
     }
