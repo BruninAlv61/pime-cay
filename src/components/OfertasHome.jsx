@@ -1,45 +1,86 @@
 import '../styles/OfertasHome.css'
 import { useState } from 'react'
-
-const ofertas = [
-  {
-    id: 1,
-    categoria: 'Vestidos',
-    nombre: 'Vestido Power Pink',
-    descripcion: 'Vestido casual perfecto para cualquier ocasión',
-    precioOferta: 89.99,
-    precioOriginal: 112.49,
-    ahorro: 22.5,
-    stock: 15,
-    imagen:
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/mujer-vestido-rosa-casual-koHz0nTilhffnqt2Vv9hc1HkHHZuQo.png',
-    oferta: '¡OFERTA! -20%',
-    tiempo: 'Tiempo limitado',
-    destacado: true
-  },
-  {
-    id: 2,
-    categoria: 'Blusas',
-    nombre: 'Blusa Summer Breeze',
-    descripcion: 'Blusa fresca y cómoda para el verano',
-    precioOferta: 49.99,
-    precioOriginal: 62.49,
-    ahorro: 12.5,
-    stock: 8,
-    imagen:
-      'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80',
-    oferta: '¡OFERTA! -20%',
-    tiempo: 'Tiempo limitado',
-    destacado: false
-  }
-]
+import { useOfertasHome } from '../hooks/useOfertasHome.js'
 
 export function OfertasHome() {
+  const { ofertas, loading, error } = useOfertasHome()
   const [actual, setActual] = useState(0)
   const total = ofertas.length
 
   const siguiente = () => setActual((prev) => (prev + 1) % total)
   const anterior = () => setActual((prev) => (prev - 1 + total) % total)
+
+  if (loading) {
+    return (
+      <section className="ofertasHome">
+        <header className="ofertasHome__header">
+          <div>
+            <h2>Ofertas Especiales</h2>
+            <p>
+              No te pierdas nuestras ofertas exclusivas con descuentos
+              increíbles por tiempo limitado.
+            </p>
+          </div>
+          <a href="#" className="ofertasHome__verTodas">
+            Ver todas las ofertas →
+          </a>
+        </header>
+        <div className="ofertasHome__carousel">
+          <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+            <p>Cargando ofertas especiales...</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (error) {
+    return (
+      <section className="ofertasHome">
+        <header className="ofertasHome__header">
+          <div>
+            <h2>Ofertas Especiales</h2>
+            <p>
+              No te pierdas nuestras ofertas exclusivas con descuentos
+              increíbles por tiempo limitado.
+            </p>
+          </div>
+          <a href="#" className="ofertasHome__verTodas">
+            Ver todas las ofertas →
+          </a>
+        </header>
+        <div className="ofertasHome__carousel">
+          <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+            <p>Error al cargar ofertas: {error}</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (ofertas.length === 0) {
+    return (
+      <section className="ofertasHome">
+        <header className="ofertasHome__header">
+          <div>
+            <h2>Ofertas Especiales</h2>
+            <p>
+              No te pierdas nuestras ofertas exclusivas con descuentos
+              increíbles por tiempo limitado.
+            </p>
+          </div>
+          <a href="#" className="ofertasHome__verTodas">
+            Ver todas las ofertas →
+          </a>
+        </header>
+        <div className="ofertasHome__carousel">
+          <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+            <p>No hay ofertas especiales disponibles en este momento</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   const oferta = ofertas[actual]
 
@@ -58,13 +99,15 @@ export function OfertasHome() {
         </a>
       </header>
       <div className="ofertasHome__carousel">
-        <button
-          className="ofertasHome__arrow left"
-          onClick={anterior}
-          aria-label="Anterior"
-        >
-          &#60;
-        </button>
+        {total > 1 && (
+          <button
+            className="ofertasHome__arrow left"
+            onClick={anterior}
+            aria-label="Anterior"
+          >
+            &#60;
+          </button>
+        )}
         <article className="ofertasHome__card">
           <div className="ofertasHome__card__imgContainer">
             <img
@@ -107,22 +150,26 @@ export function OfertasHome() {
             </button>
           </div>
         </article>
-        <button
-          className="ofertasHome__arrow right"
-          onClick={siguiente}
-          aria-label="Siguiente"
-        >
-          &#62;
-        </button>
+        {total > 1 && (
+          <button
+            className="ofertasHome__arrow right"
+            onClick={siguiente}
+            aria-label="Siguiente"
+          >
+            &#62;
+          </button>
+        )}
       </div>
-      <div className="ofertasHome__dots">
-        {ofertas.map((_, idx) => (
-          <span
-            key={idx}
-            className={`dot${idx === actual ? ' active' : ''}`}
-          ></span>
-        ))}
-      </div>
+      {total > 1 && (
+        <div className="ofertasHome__dots">
+          {ofertas.map((_, idx) => (
+            <span
+              key={idx}
+              className={`dot${idx === actual ? ' active' : ''}`}
+            ></span>
+          ))}
+        </div>
+      )}
     </section>
   )
 }
