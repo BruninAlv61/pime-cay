@@ -12,7 +12,7 @@ export const useCategoriasHome = () => {
       setLoading(true)
       setError(null)
       
-      const response = await fetch('http://localhost:3000/categorias')
+      const response = await fetch('https://pime-cay-api.onrender.com/categorias')
       const json = await response.json()
       
       // Retornar las categorías tal como vienen de la API

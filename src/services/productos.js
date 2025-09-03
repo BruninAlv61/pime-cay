@@ -1,5 +1,5 @@
 // src/services/productos.js
-const API_URL = 'http://localhost:3000/productos'
+const API_URL = 'https://pime-cay-api.onrender.com/productos'
 
 // Obtener todos los productos (TODOS, sin límites)
 export const getProductos = async () => {
@@ -26,7 +26,7 @@ export const getProductosDestacados = async () => {
 // Servicio corregido para obtener categorías
 export const getCategorias = async () => {
   try {
-    const response = await fetch('http://localhost:3000/categorias')
+    const response = await fetch('https://pime-cay-api.onrender.com/categorias')
     const json = await response.json()
     
     // Mapear las categorías al formato esperado por los componentes
@@ -47,9 +47,9 @@ export const getCategorias = async () => {
 export const getOfertas = async () => {
   try {
     const [ofertasResponse, productosResponse, categoriasResponse] = await Promise.all([
-      fetch('http://localhost:3000/ofertas'),
+      fetch('https://pime-cay-api.onrender.com/ofertas'),
       fetch(API_URL),
-      fetch('http://localhost:3000/categorias')
+      fetch('https://pime-cay-api.onrender.com/categorias')
     ])
     
     const ofertasData = await ofertasResponse.json()
