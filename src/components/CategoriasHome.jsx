@@ -92,7 +92,10 @@ export function CategoriasHome() {
           </div>
         ) : (
           categorias.map((categoria) => (
-            <picture
+            <Link
+              to={`/productos?categoria=${encodeURIComponent(
+                categoria.categoriaNombre
+              )}`}
               key={categoria.categoriaId}
               style={{
                 background: `url(${categoria.categoriaImagen})`,
@@ -103,7 +106,7 @@ export function CategoriasHome() {
             >
               <h4>{categoria.categoriaNombre}</h4>
               <p>{categoria.categoriaDescripcion}</p>
-            </picture>
+            </Link>
           ))
         )}
       </article>

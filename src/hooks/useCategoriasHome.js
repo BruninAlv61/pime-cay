@@ -1,29 +1,34 @@
 // src/hooks/useCategoriasHome.js
 import { useEffect, useState } from "react"
-import { getCategorias } from "../services/productos.js"
 
+// Hook personalizado para obtener categorías desde la API
 export const useCategoriasHome = () => {
-    const [categorias, setCategorias] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
-    
-    const fetchData = async () => {
-        try {
-            setLoading(true)
-            setError(null)
-            const newCategorias = await getCategorias()
-            // Limitamos a 4 categorías para el home
-            setCategorias(newCategorias.slice(0, 4))
-        } catch (e) {
-            setError(e.message)
-        } finally {
-            setLoading(false)
-        }
+  const [categorias, setCategorias] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  const fetchCategorias = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      
+      const response = await fetch('http://localhost:3000/categorias')
+      const json = await response.json()
+      
+      // Retornar las categorías tal como vienen de la API
+      // (sin mapear, para mantener los nombres originales)
+      setCategorias(json.categorias || [])
+    } catch (e) {
+      setError(e.message || 'Error al obtener las categorías')
+    } finally {
+      setLoading(false)
     }
-    
-    useEffect(() => {
-        fetchData()
-    }, [])
-    
-    return { categorias, loading, error, refetch: fetchData }
+  }
+
+  useEffect(() => {
+    fetchCategorias()
+  }, [])
+
+  return { categorias, loading, error, refetch: fetchCategorias }
+
 }

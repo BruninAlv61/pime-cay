@@ -1,9 +1,40 @@
 import '../styles/ProductosDestacados.css'
-import { useProductosDestacados } from '../hooks/useProductosDestacados.js'
+import { useEffect, useState } from 'react'
+import { getProductos, getCategorias } from '../services/productos'
 import { Link } from 'react-router-dom'
 
 export function ProductosDestacados() {
-  const { productos, loading, error } = useProductosDestacados()
+  const [productos, setProductos] = useState([])
+  const [categoriasMap, setCategoriasMap] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true)
+      setError(null)
+      try {
+        const [prods, cats] = await Promise.all([
+          getProductos(),
+          getCategorias()
+        ])
+        // Solo los primeros 4 como destacados
+        setProductos(prods.slice(0, 4))
+
+        // Crear mapa de categorías usando el idCategoria correcto
+        const map = {}
+        cats.forEach((c) => {
+          map[c.idCategoria] = c.nombre
+        })
+        setCategoriasMap(map)
+      } catch (e) {
+        setError(e.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
 
   if (loading) {
     return (
@@ -75,10 +106,15 @@ export function ProductosDestacados() {
           </div>
         ) : (
           productos.map((producto) => {
-            // Manejar imagen que puede ser string o array
             const imagenUrl = Array.isArray(producto.imagen)
               ? producto.imagen[0]
               : producto.imagen || '/placeholder-product.jpg'
+
+            // Obtener nombre de categoría del mapa
+            const categoriaNombre =
+              producto.idCategoria && categoriasMap[producto.idCategoria]
+                ? categoriasMap[producto.idCategoria]
+                : 'Sin categoría'
 
             return (
               <div
@@ -92,7 +128,7 @@ export function ProductosDestacados() {
                 />
                 <div className="productosDestacados__list__itemContent">
                   <div className="productosDestacados__list__itemContent__text">
-                    <span className="tag">Productos</span>
+                    <span className="tag">{categoriaNombre}</span>
                     <h4>{producto.nombre}</h4>
                     <p className="description">{producto.descripcion}</p>
                   </div>
@@ -100,9 +136,12 @@ export function ProductosDestacados() {
                     <p>${producto.precio}</p>
                     <span>Stock: {producto.stock}</span>
                   </div>
-                  <button className="productosDestacados__list__itemContent__verDetalles">
+                  <Link
+                    to={`/productos/${producto.idProducto}`}
+                    className="productosDestacados__list__itemContent__verDetalles"
+                  >
                     Ver Detalles
-                  </button>
+                  </Link>
                 </div>
               </div>
             )
