@@ -35,7 +35,7 @@ export function Footer() {
             <span className="footer__socialTitle">Síguenos</span>
             <Link
               className="footer__socialLink"
-              to="https://instagram.com"
+              to="https://www.instagram.com/pimecaylaschicasdelaguardia"
               target="_blank"
               rel="noopener noreferrer"
             >
