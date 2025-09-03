@@ -87,6 +87,8 @@ export function OfertasHome() {
 
   return (
     <section className="ofertasHome">
+      <div id="ofertas"></div>
+
       <header className="ofertasHome__header">
         <div>
           <h2>Ofertas Especiales</h2>

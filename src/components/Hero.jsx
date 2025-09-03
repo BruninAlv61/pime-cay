@@ -10,10 +10,10 @@ export function Hero() {
           individual y hacerte sentir increíble.
         </p>
         <div className="hero__actions">
-          <a className="hero__link" href="#">
+          <a className="hero__link" href="#productos">
             Explorar Colección
           </a>
-          <a className="hero__link hero__link--offers" href="#">
+          <a className="hero__link hero__link--offers" href="#ofertas">
             Ver Ofertas Especiales
           </a>
         </div>

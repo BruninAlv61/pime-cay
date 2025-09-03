@@ -87,7 +87,7 @@ export function ProductosDestacados() {
   return (
     <section className="productosDestacados">
       <header className="productosDestacados__header">
-        <div className="productosDestacados__header__title">
+        <div id="productos" className="productosDestacados__header__title">
           <h2>Productos Destacados</h2>
           <Link to="productos">Ver todos los productos</Link>
         </div>

@@ -1,8 +1,15 @@
 import '../styles/Layout.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { Footer } from './Footer.jsx'
 
 export function Layout({ children }) {
+  const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [location.pathname])
+
   return (
     <>
       <header className="layoutHeader">
