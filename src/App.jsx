@@ -6,6 +6,7 @@ import { Productos } from './pages/Productos.jsx'
 import { Ofertas } from './pages/Ofertas.jsx'
 import { Categorias } from './pages/Categorias.jsx'
 import { ProductosVerDetalles } from './pages/ProductosVerDetalles.jsx'
+import { OfertasVerDetalles } from './pages/OfertasVerDetalles.jsx'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/ofertas" element={<Ofertas />} />
           <Route path="/categorias" element={<Categorias />} />
           <Route path="/productos/:id" element={<ProductosVerDetalles />} />
+          <Route path="/ofertas/:id" element={<OfertasVerDetalles />} />
         </Routes>
       </Layout>
     </BrowserRouter>

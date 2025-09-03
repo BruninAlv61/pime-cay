@@ -75,10 +75,16 @@ export const getOfertas = async () => {
       const precioOferta = precioOriginal * (1 - oferta.descuento / 100)
       const ahorro = precioOriginal - precioOferta
       
-      // Manejar imagen que puede ser string o array
-      const imagenUrl = Array.isArray(producto.imagen) 
+      // ✅ CAMBIO PRINCIPAL: Preservar el array completo de imágenes
+      // Para mostrar en tarjetas (Ofertas.jsx) usamos la primera imagen
+      const imagenPrincipal = Array.isArray(producto.imagen) 
         ? producto.imagen[0] 
         : producto.imagen || '/placeholder-product.jpg'
+      
+      // Para detalles (OfertasVerDetalles.jsx) preservamos todas las imágenes
+      const todasLasImagenes = Array.isArray(producto.imagen) 
+        ? producto.imagen 
+        : [producto.imagen || '/placeholder-product.jpg']
       
       // Obtener nombre de la categoría
       const categoriaNombre = producto.idCategoria && categoriasMap[producto.idCategoria] 
@@ -96,7 +102,9 @@ export const getOfertas = async () => {
         ahorro: ahorro,
         descuento: oferta.descuento,
         stock: producto.stock,
-        imagen: imagenUrl,
+        imagen: imagenPrincipal, // Para las tarjetas de ofertas
+        imagenes: todasLasImagenes, // Para el carrusel en detalles
+        talle: producto.talle, // Agregar información de tallas
         oferta: `¡OFERTA! -${oferta.descuento}%`,
         tiempo: 'Tiempo limitado',
         destacado: true

@@ -146,9 +146,12 @@ export function OfertasHome() {
               <span className="stock">Stock: {oferta.stock}</span>
               <span className="pocasUnidades">Quedan pocas unidades</span>
             </div>
-            <button className="ofertasHome__card__boton">
+            <Link
+              to={`/ofertas/${oferta.id}`}
+              className="ofertasHome__card__boton"
+            >
               Ver Oferta Especial
-            </button>
+            </Link>
           </div>
         </article>
         {total > 1 && (
