@@ -174,9 +174,12 @@ export function ProductosVerDetalles() {
               </div>
             )}
           </div>
-          <button className="productoDetalles__comprar">
+          <a
+            href="https://wa.me/91138909080"
+            className="productoDetalles__comprar"
+          >
             Contactar para Comprar
-          </button>
+          </a>
         </div>
       </div>
       {relacionados.length > 0 && (

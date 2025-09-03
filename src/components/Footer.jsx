@@ -1,7 +1,24 @@
 import '../styles/Footer.css'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getCategorias } from '../services/productos'
 
 export function Footer() {
+  const [categorias, setCategorias] = useState([])
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchCategorias = async () => {
+      try {
+        const cats = await getCategorias()
+        setCategorias(cats)
+      } catch {
+        setError('No se pudieron cargar las categorías')
+      }
+    }
+    fetchCategorias()
+  }, [])
+
   return (
     <footer className="footer" id="contacto">
       <div className="footer__container">
@@ -37,18 +54,19 @@ export function Footer() {
           <div className="footer__section">
             <span className="footer__sectionTitle">Categorías</span>
             <ul className="footer__list">
-              <li>
-                <Link to="#">Vestidos</Link>
-              </li>
-              <li>
-                <Link to="#">Tops</Link>
-              </li>
-              <li>
-                <Link to="#">Faldas</Link>
-              </li>
-              <li>
-                <Link to="#">Accesorios</Link>
-              </li>
+              {error && <li style={{ color: 'red', fontSize: 13 }}>{error}</li>}
+              {categorias.length === 0 && !error && <li>Cargando...</li>}
+              {categorias.map((cat) => (
+                <li key={cat.idCategoria}>
+                  <Link
+                    to={`/productos?categoria=${encodeURIComponent(
+                      cat.nombre
+                    )}`}
+                  >
+                    {cat.nombre}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="footer__section">
@@ -58,13 +76,10 @@ export function Footer() {
                 <a href="#">Guía de Tallas</a>
               </li>
               <li>
-                <a href="#">Envíos</a>
-              </li>
-              <li>
                 <a href="#">Devoluciones</a>
               </li>
               <li>
-                <a href="#">Contacto</a>
+                <a href="#contacto">Contacto</a>
               </li>
             </ul>
           </div>

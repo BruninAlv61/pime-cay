@@ -140,7 +140,8 @@ export function CategoriasHome() {
                   style={{
                     margin: 0,
                     fontSize: '1rem',
-                    textShadow: '0 2px 8px rgba(0,0,0,0.13)'
+                    textShadow: '0 2px 8px rgba(0,0,0,0.13)',
+                    height: '40px'
                   }}
                 >
                   {categoria.categoriaDescripcion}

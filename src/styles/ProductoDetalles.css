@@ -179,6 +179,8 @@
   font-weight: 600;
   cursor: pointer;
   margin-top: 0.7rem;
+  text-decoration: none;
+  text-align: center;
   transition: background 0.2s;
 }
 .productoDetalles__comprar:hover {

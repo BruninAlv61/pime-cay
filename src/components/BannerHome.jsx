@@ -60,7 +60,7 @@ export function BannerHome() {
         </div>
         <div className="banner-home__feature">
           <span className="banner-home__icon banner-home__icon--pink">
-            {/* SVG camión */}
+            {/* SVG de atención personalizada (icono de chat o usuario) */}
             <svg
               width="40"
               height="40"
@@ -70,16 +70,15 @@ export function BannerHome() {
             >
               <circle cx="20" cy="20" r="20" fill="#FFE6F7" />
               <g stroke="#EF55E6" strokeWidth="2" strokeLinejoin="round">
-                <rect x="13" y="18" width="8" height="7" rx="2" />
-                <rect x="21" y="20" width="6" height="5" rx="1.5" />
-                <circle cx="16.5" cy="27" r="1.5" />
-                <circle cx="25" cy="27" r="1.5" />
+                <circle cx="20" cy="18" r="5" />
+                <path d="M12 30c0-4.418 3.582-8 8-8s8 3.582 8 8" />
               </g>
             </svg>
           </span>
-          <h3 className="banner-home__feature-title">Envío Rápido</h3>
+          <h3 className="banner-home__feature-title">Atención Personalizada</h3>
           <p className="banner-home__feature-desc">
-            Recibe tu pedido en tiempo récord, directo a tu puerta.
+            Te acompañamos en cada paso: asesoría y soporte para que tu
+            experiencia sea única.
           </p>
         </div>
       </div>

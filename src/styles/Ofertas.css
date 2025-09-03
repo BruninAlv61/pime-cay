@@ -187,6 +187,7 @@
   color: #656865;
   font-size: 1rem;
   margin-bottom: 0.7rem;
+  height: 60px;
 }
 .ofertas__card__precios {
   display: flex;

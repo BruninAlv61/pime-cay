@@ -104,6 +104,7 @@
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
+  padding: 1rem;
 }
 
 .productos__card {
@@ -132,6 +133,7 @@
   padding: 0.2rem 0.8rem;
   font-weight: 600;
   font-size: 15px;
+
 }
 
 .productos__card__img {
@@ -169,6 +171,7 @@
   color: #5A6164;
   font-size: 15px;
   min-height: 40px;
+  height: 60px;
 }
 
 .productos__card__precios {
