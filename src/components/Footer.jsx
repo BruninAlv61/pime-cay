@@ -2,10 +2,13 @@ import '../styles/Footer.css'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getCategorias } from '../services/productos'
+import { useForm, ValidationError } from '@formspree/react'
 
 export function Footer() {
   const [categorias, setCategorias] = useState([])
   const [error, setError] = useState(null)
+
+  const [state, handleSubmit] = useForm('xzzakbek')
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -85,22 +88,44 @@ export function Footer() {
           </div>
           <div className="footer__section">
             <span className="footer__sectionTitle">Contáctame</span>
-            <form className="footer__form" onSubmit={(e) => e.preventDefault()}>
-              <input
-                className="footer__input"
-                type="email"
-                placeholder="tucorreo@email.com"
-                required
-              />
-              <textarea
-                className="footer__textarea"
-                placeholder="Introduzca su mensaje"
-                required
-              />
-              <button className="footer__button" type="submit">
-                ENVIAR
-              </button>
-            </form>
+            {state.succeeded ? (
+              <div className="footer__success">
+                <p>¡Gracias por tu mensaje! Te responderemos pronto.</p>
+              </div>
+            ) : (
+              <form className="footer__form" onSubmit={handleSubmit}>
+                <input
+                  className="footer__input"
+                  type="email"
+                  name="email"
+                  placeholder="tucorreo@email.com"
+                  required
+                />
+                <ValidationError
+                  prefix="Email"
+                  field="email"
+                  errors={state.errors}
+                />
+                <textarea
+                  className="footer__textarea"
+                  name="message"
+                  placeholder="Introduzca su mensaje"
+                  required
+                />
+                <ValidationError
+                  prefix="Message"
+                  field="message"
+                  errors={state.errors}
+                />
+                <button
+                  className="footer__button"
+                  type="submit"
+                  disabled={state.submitting}
+                >
+                  {state.submitting ? 'ENVIANDO...' : 'ENVIAR'}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
