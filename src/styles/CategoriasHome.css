@@ -74,6 +74,7 @@
             width: 100%;
             max-width: 380px;
             cursor: pointer;
+            text-decoration: none;
             transition: transform 0.15s, box-shadow 0.15s;
         }
         .categoriasHome__list__item::after {

@@ -91,21 +91,61 @@ export function CategoriasHome() {
             <p>No hay categorías disponibles</p>
           </div>
         ) : (
-          categorias.map((categoria) => (
+          categorias.slice(0, 4).map((categoria) => (
             <Link
               to={`/productos?categoria=${encodeURIComponent(
                 categoria.categoriaNombre
               )}`}
               key={categoria.categoriaId}
+              className="categoriasHome__list__item"
               style={{
+                position: 'relative',
                 background: `url(${categoria.categoriaImagen})`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center'
+                backgroundPosition: 'center',
+                overflow: 'hidden'
               }}
-              className="categoriasHome__list__item"
             >
-              <h4>{categoria.categoriaNombre}</h4>
-              <p>{categoria.categoriaDescripcion}</p>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  height: '55%',
+                  background:
+                    'linear-gradient(0deg, rgba(30,30,30,0.60) 70%, rgba(30,30,30,0.0) 100%)',
+                  zIndex: 1
+                }}
+              />
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 2,
+                  padding: '1.2rem 1rem 0.7rem 1rem',
+                  color: '#fff'
+                }}
+              >
+                <h4
+                  style={{
+                    margin: 0,
+                    fontWeight: 600,
+                    fontSize: '1.15rem',
+                    textShadow: '0 2px 8px rgba(0,0,0,0.13)'
+                  }}
+                >
+                  {categoria.categoriaNombre}
+                </h4>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: '1rem',
+                    textShadow: '0 2px 8px rgba(0,0,0,0.13)'
+                  }}
+                >
+                  {categoria.categoriaDescripcion}
+                </p>
+              </div>
             </Link>
           ))
         )}
