@@ -13,11 +13,13 @@ export function Layout({ children }) {
   return (
     <>
       <header className="layoutHeader">
-        <img
-          className="layoutHeader__img"
-          src="/logo.png"
-          alt="Logo de PIME-CAY, es una imagen de las Chicas Super poderosas con el texto 'PIME-CAY, Las Chicas de la Guardia'"
-        />
+        <Link to="/">
+          <img
+            className="layoutHeader__img"
+            src="/logo.png"
+            alt="Logo de PIME-CAY, es una imagen de las Chicas Super poderosas con el texto 'PIME-CAY, Las Chicas de la Guardia'"
+          />
+        </Link>
         <nav className="layoutHeader__nav">
           <ul className="layoutHeader__navList">
             <li className="layoutHeader__navItem">
