@@ -1,9 +1,9 @@
 import '../styles/CategoriasHome.css'
-import { useCategoriasHome } from '../hooks/useCategoriasHome.js'
+import { useCategorias } from '../hooks/useCategorias.js'
 import { Link } from 'react-router-dom'
 
 export function CategoriasHome() {
-  const { categorias, loading, error } = useCategoriasHome()
+  const { categoriasHome, loading, error } = useCategorias()
 
   if (loading) {
     return (
@@ -80,7 +80,7 @@ export function CategoriasHome() {
         </div>
       </header>
       <article className="categoriasHome__list">
-        {categorias.length === 0 ? (
+        {categoriasHome.length === 0 ? (
           <div
             style={{
               textAlign: 'center',
@@ -91,16 +91,16 @@ export function CategoriasHome() {
             <p>No hay categorías disponibles</p>
           </div>
         ) : (
-          categorias.slice(0, 4).map((categoria) => (
+          categoriasHome.map((categoria) => (
             <Link
               to={`/productos?categoria=${encodeURIComponent(
-                categoria.categoriaNombre
+                categoria.nombre
               )}`}
-              key={categoria.categoriaId}
+              key={categoria.idCategoria}
               className="categoriasHome__list__item"
               style={{
                 position: 'relative',
-                background: `url(${categoria.categoriaImagen})`,
+                background: `url(${categoria.imagen})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 overflow: 'hidden'
@@ -144,7 +144,7 @@ export function CategoriasHome() {
                     height: '40px'
                   }}
                 >
-                  {categoria.categoriaDescripcion}
+                  {categoria.descripcion}
                 </p>
               </div>
             </Link>

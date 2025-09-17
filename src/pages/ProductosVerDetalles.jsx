@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { getProductos, getCategorias } from '../services/productos'
+import { getProductos } from '../services/productos.js'
+import { getCategorias } from '../services/categorias.js'
 import '../styles/ProductoDetalles.css'
 
 export function ProductosVerDetalles() {

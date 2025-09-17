@@ -1,27 +1,11 @@
 import '../styles/Footer.css'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { getCategorias } from '../services/productos'
 import { useForm, ValidationError } from '@formspree/react'
+import { useCategorias } from '../hooks/useCategorias.js'
 
 export function Footer() {
-  const [categorias, setCategorias] = useState([])
-  const [error, setError] = useState(null)
-
   const [state, handleSubmit] = useForm('xzzakbek')
-
-  useEffect(() => {
-    const fetchCategorias = async () => {
-      try {
-        const cats = await getCategorias()
-        setCategorias(cats)
-      } catch {
-        setError('No se pudieron cargar las categorías')
-      }
-    }
-    fetchCategorias()
-  }, [])
-
+  const { categorias, error } = useCategorias()
   return (
     <footer className="footer" id="contacto">
       <div className="footer__container">
@@ -99,6 +83,7 @@ export function Footer() {
                   type="email"
                   name="email"
                   placeholder="tucorreo@email.com"
+                  autoComplete="off"
                   required
                 />
                 <ValidationError

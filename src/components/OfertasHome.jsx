@@ -1,10 +1,10 @@
 import '../styles/OfertasHome.css'
 import { useState } from 'react'
-import { useOfertasHome } from '../hooks/useOfertasHome.js'
+import { useOfertas } from '../hooks/useOfertas.js'
 import { Link } from 'react-router-dom'
 
 export function OfertasHome() {
-  const { ofertas, loading, error } = useOfertasHome()
+  const { ofertas, loading, error } = useOfertas()
   const [actual, setActual] = useState(0)
   const total = ofertas.length
 

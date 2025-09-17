@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { getProductos, getCategorias } from '../services/productos'
+import { getProductos } from '../services/productos.js'
+import { getCategorias } from '../services/categorias.js'
 import { Link, useSearchParams } from 'react-router-dom'
 import '../styles/Productos.css'
 

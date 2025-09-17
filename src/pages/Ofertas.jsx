@@ -1,30 +1,10 @@
 // src/pages/Ofertas.jsx
-import { useEffect, useState } from 'react'
-import { getOfertas } from '../services/productos'
 import '../styles/Ofertas.css'
 import { useNavigate } from 'react-router-dom'
-
+import { useOfertas } from '../hooks/useOfertas.js'
 export function Ofertas() {
-  const [ofertas, setOfertas] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const { loading, error, ofertas } = useOfertas()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        const data = await getOfertas()
-        setOfertas(data)
-      } catch (e) {
-        setError(e.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
 
   // Calcular el mayor descuento
   const maxDescuento =

@@ -1,39 +1,11 @@
 // src/pages/OfertasVerDetalles.jsx
-import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { getOfertas } from '../services/productos'
 import '../styles/ProductoDetalles.css'
+import { useOfertasDetalles } from '../hooks/useOfertas'
+import { useState } from 'react'
 
 export function OfertasVerDetalles() {
-  const { id } = useParams()
-  const [oferta, setOferta] = useState(null)
-  const [relacionadas, setRelacionadas] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const { loading, error, oferta, relacionadas } = useOfertasDetalles()
   const [imgIdx, setImgIdx] = useState(0)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        const ofertas = await getOfertas()
-        const of = ofertas.find((o) => String(o.id) === String(id))
-        setOferta(of)
-        if (of) {
-          const rel = ofertas.filter(
-            (o) => o.categoria === of.categoria && o.id !== of.id
-          )
-          setRelacionadas(rel)
-        }
-      } catch (e) {
-        setError(e.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [id])
 
   if (loading)
     return <div className="productoDetalles__loading">Cargando...</div>

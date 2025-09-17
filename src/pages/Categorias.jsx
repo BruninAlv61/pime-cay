@@ -1,33 +1,8 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getCategorias, getProductos } from '../services/productos'
 import '../styles/Categorias.css'
-
+import { useCategoriasPage } from '../hooks/useCategorias.js'
 export function Categorias() {
-  const [categorias, setCategorias] = useState([])
-  const [productos, setProductos] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        const [cats, prods] = await Promise.all([
-          getCategorias(),
-          getProductos()
-        ])
-        setCategorias(cats)
-        setProductos(prods)
-      } catch (e) {
-        setError(e.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
+  const { loading, error, categorias, productos } = useCategoriasPage()
 
   // Contar productos por idCategoria
   const productosPorCategoria = productos.reduce((acc, prod) => {
